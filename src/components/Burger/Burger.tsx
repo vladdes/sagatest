@@ -10,14 +10,16 @@ interface IBurgerBuilderProps {
 
 const Burger = (props: IBurgerBuilderProps) => {
     const iGArray = props.ingredients;
-    const transformedIngredients = Object.keys(iGArray)
+    let transformedIngredients = Object.keys(iGArray)
         .map(igKey => {
             return ingredients(iGArray, igKey);
         })
         .reduce((arr, el) =>{
             return arr.concat(el);
         } , []);
-    console.log(transformedIngredients);
+    if(transformedIngredients.length === 0){
+        transformedIngredients = [<p key="noIG">Please add ingredients</p>];
+    }
     return (
 
         <div className={classes.burger}>
