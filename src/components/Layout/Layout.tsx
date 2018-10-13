@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Aux from '../../hoc/Aux';
+import Aux from '../../hoc/CAux';
 import * as classes from './Layout.css';
 interface ILayoutProps {
     name?: string
