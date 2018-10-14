@@ -4,33 +4,39 @@ import * as classes from './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
 
 const controls = [
-    { label: constants.bacon, type: constants.bacon },
-    { label: constants.meat, type: constants.meat },
     { label: constants.salad, type: constants.salad },
-    { label: constants.cheese, type: constants.cheese }
+    { label: constants.bacon, type: constants.bacon },
+    { label: constants.cheese, type: constants.cheese },
+    { label: constants.meat, type: constants.meat }
 ];
-interface IBuildControlsProps{
-    ingredientAdded: Function;
-    ingredientRemoved: Function;
+
+interface IBuildControlsProps {
+    ingredientAdded(type: string): void;
+    ingredientRemoved(type: string): void;
+    ordered(): void;
     disabled: any[];
     price: number;
-}   
+    purchasable: boolean;
+}
 
 const BuildControls = (props: IBuildControlsProps) => {
     return (
         <div className={classes.BuildControls}>
-        <div className={classes.InnerWrapper} >
-            <p>Price: ${props.price.toFixed(2)}</p>
-           {controls.map((control: any, index: number) => {
-               
-               return <BuildControl key={control.label + index} label={control.label} 
-                        ingredientAdded={() => props.ingredientAdded(control.type)} 
+            <div className={classes.InnerWrapper} >
+                <p>Price: ${props.price.toFixed(2)}</p>
+                {controls.map((control: any, index: number) => {
+
+                    return <BuildControl key={control.label + index} label={control.label}
+                        ingredientAdded={() => props.ingredientAdded(control.type)}
                         ingredientRemoved={() => props.ingredientRemoved(control.type)}
-                        disabled={ props.disabled[control.type] }
-                        />;
-           })}
-           <button className={classes.orderButton}>Order Now</button>
-           </div>
+                        disabled={props.disabled[control.type]}
+                    />;
+                })}
+                <button
+                    className={classes.orderButton}
+                    disabled={!props.purchasable}
+                    onClick={() => props.ordered()}>Order Now</button>
+            </div>
         </div>
     );
 };
