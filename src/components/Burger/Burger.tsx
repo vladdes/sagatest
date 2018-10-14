@@ -34,7 +34,7 @@ export default Burger;
 
 function ingredients(iGArray: IIngredients, igKey: string) {
     var elements: JSX.Element[] = Array.apply(null, Array(iGArray[igKey]));
-    elements.forEach((value, i) => {
+    elements.forEach((_, i) => {
         elements[i] = <Ingredients key={igKey + i} type={igKey} />;
     })
    

@@ -1,10 +1,35 @@
 .BuildControls {
     width: 100%;
     background-color: #CF8F2E;
+    box-shadow: 0 2px 1px #ccc;
+    margin: auto;
+    height: 40vh;
+}
+
+.InnerWrapper {
+    padding: 10px 0;
     display: flex;
     flex-flow: column;
     align-items: center;
-    box-shadow: 0 2px 1px #ccc;
-    margin: auto;
-    padding: 10px 0;
+   
+}
+
+.BuildControls .orderButton {
+    display: block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #AA6817;
+    cursor: pointer;
+    outline: none;
+    background-color: black;
+    color: white;
+}
+
+
+.BuildControls .orderButton:hover, .BuildControls .orderButton:active {  
+    background-color: #DAA972;
+    color: white;
 }

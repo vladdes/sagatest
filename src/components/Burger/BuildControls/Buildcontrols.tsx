@@ -9,13 +9,28 @@ const controls = [
     { label: constants.salad, type: constants.salad },
     { label: constants.cheese, type: constants.cheese }
 ];
-    
-const BuildControls = (props: any) => {
+interface IBuildControlsProps{
+    ingredientAdded: Function;
+    ingredientRemoved: Function;
+    disabled: any[];
+    price: number;
+}   
+
+const BuildControls = (props: IBuildControlsProps) => {
     return (
         <div className={classes.BuildControls}>
+        <div className={classes.InnerWrapper} >
+            <p>Price: ${props.price.toFixed(2)}</p>
            {controls.map((control: any, index: number) => {
-               return <BuildControl key={control.label + index} label={control.label} type={control.type} />;
+               
+               return <BuildControl key={control.label + index} label={control.label} 
+                        ingredientAdded={() => props.ingredientAdded(control.type)} 
+                        ingredientRemoved={() => props.ingredientRemoved(control.type)}
+                        disabled={ props.disabled[control.type] }
+                        />;
            })}
+           <button className={classes.orderButton}>Order Now</button>
+           </div>
         </div>
     );
 };

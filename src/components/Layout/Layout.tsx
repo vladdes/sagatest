@@ -7,12 +7,14 @@ interface ILayoutProps {
 }
 
 const Layout = (props: ILayoutProps): any => {
-    return <Aux>
-        <div>Toolbar, SideDrawer, Backdrop</div>
-        <main  className={classes.content}>
-            {props.children}
-        </main>
-    </Aux>
+    return (
+        <Aux>
+
+            <main className={classes.content}>
+                {props.children}
+            </main>
+        </Aux>
+    );
 };
 
 export default Layout;
