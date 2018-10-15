@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as constants from '../../../Constants/Constants';
 import * as classes from './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
+import Button from 'src/UI/Button/Button';
 
 const controls = [
     { label: constants.salad, type: constants.salad },
@@ -32,10 +33,10 @@ const BuildControls = (props: IBuildControlsProps) => {
                         disabled={props.disabled[control.type]}
                     />;
                 })}
-                <button
-                    className={classes.orderButton}
-                    disabled={!props.purchasable}
-                    onClick={() => props.ordered()}>Order Now</button>
+                <Button isDisabled={!props.purchasable} 
+                        buttonClasses={classes.orderButton} 
+                        buttonValue="Order Now"
+                        clicked={props.ordered}/>
             </div>
         </div>
     );

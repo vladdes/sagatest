@@ -1,9 +1,12 @@
 import * as React from 'react';
 import Aux from 'src/hoc/CAux';
 import { IIngredients } from './../../../interfaces/GlobalBurgerInterfaces';
+import Button from 'src/UI/Button/Button';
+import * as classes from './OrderSummary.css';
 
 interface IOrderSummaryProps {
     ingredients: IIngredients;
+    closeModal(): void;
 }
 
 const OrderSummary = (props: IOrderSummaryProps) => {
@@ -18,8 +21,8 @@ const OrderSummary = (props: IOrderSummaryProps) => {
                 })}
             </ul>
             <p>Continue to Checkout?</p>
-            <button>Cancel</button>
-            <button>Continue</button>
+            <Button isDisabled={ false } buttonValue="Cancel" buttonClasses={ classes.buttonOrder } clicked={ props.closeModal }/>
+            <Button isDisabled={ false } buttonValue="Order" buttonClasses={ classes.buttonOrder }  clicked={ props.closeModal }/>
         </Aux>
     );
 };

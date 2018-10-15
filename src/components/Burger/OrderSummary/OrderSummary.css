@@ -1,0 +1,18 @@
+.buttonOrder {
+    display: inline-block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #AA6817;
+    cursor: pointer;
+    outline: none;
+    background-color: black;
+    color: white;
+}
+
+ .buttonOrder:hover, .BuildControls .buttonOrder:active {  
+    background-color: #DAA972;
+    color: white;
+}
